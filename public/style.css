@@ -4,6 +4,7 @@
 
 .row {
     overflow: visible;
+    position: relative;
 }
 
 .clearfix {
@@ -12,49 +13,63 @@
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
 }
 
 header {
-    margin-bottom: .5em;
+  color: #FFF;
+  background: #777;
+  position: relative;
+  border-bottom: 1em;
 }
 
 header h1 {
-    padding: .5em;
-    color: #FFF;
-    background: #333;
+  padding: .5em;
+  margin-bottom: .5em;
+}
+
+.alphabet {
+  display: none;
+}
+
+.alphabet a.letter {
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
 }
 
 .person {
-    padding: 1em 1em 1em 120px;
-    margin: 1em .5em 10px;
-    background: #EEE;
-    position: relative;
-    overflow: visible;
-    min-height: 70px;
+  padding: 1.4em 1em 1em 120px;
+  margin: 1em .5em 10px;
+  background: #EEE;
+  position: relative;
+  overflow: visible;
+  min-height: 70px;
 }
 
 .person .avatar {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    width: 100px;
-    height: 100px;
-    float: left;
-    margin-right: .5em;
-    border: 1px solid #efefef;
-    background: #DDD;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin-right: .5em;
+  border: 1px solid #efefef;
+  background: #DDD;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 	-webkit-transform: rotate(-3deg); 
-    -moz-transform: rotate(-3deg); 
-    -o-transform: rotate(-3deg);
-    -ms-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg); 
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
 }
 
 .person .avatar {
-    overflow: hidden;
-    line-height: 100px;
+  overflow: hidden;
+  line-height: 100px;
 }
 
 .person .avatar img {
@@ -84,12 +99,43 @@ header h1 {
 .person .location.sydney {
     background: #6293E3;
 }
+
 .person .location.melbourne {
     background: #84CF80;
 }
+
 .person .location.brisbane {
     background: #EDD77E;
 }
+
 .person .location.perth {
     background: #EBABD0;
+}
+
+@media only screen and (max-width: 1023px) {
+  header h1 {
+    display: none;
+  }
+  
+  .container {
+    margin-top: 5em;
+  }
+  
+  .alphabet {
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 1em 0;
+    background: #777;
+    box-shadow: 0 0 10px #CCC;    
+    -moz-box-shadow: 0 0 10px #CCC;
+    -webkit-box-shadow: 0 0 10px #000;
+  }
+  
+  .alphabet .letter {
+    width: 3.846%;
+    text-align: center;
+  }
 }

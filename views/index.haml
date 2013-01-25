@@ -11,17 +11,23 @@
     %link{rel: "stylesheet", type: "text/css", href: "style.css"}
         
   %body
+    .alphabet
+      -('A'..'Z').each do |char|
+        %a.letter{href: "##{char}"}=char  
+        
     .container
       .row
         .twelvecol
           %header
-            %h1 TW Avatars
+            %h1 Team Hug 2013 Photo Book
+            .clearfix
         
       -@people.each_slice(3) do |row|
         .row
           -row.each do |person|
             .fourcol
               .person
+                %a{name: person.name[0]}
                 .avatar
                   %image{src: person.avatar}
                 .name  

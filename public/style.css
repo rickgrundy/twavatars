@@ -42,6 +42,7 @@ header h1 {
     float: left;
     margin-right: .5em;
     border: 1px solid #efefef;
+    background: #DDD;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -51,10 +52,44 @@ header h1 {
     -ms-transform: rotate(-3deg);
 }
 
+.person .avatar {
+    overflow: hidden;
+    line-height: 100px;
+}
+
+.person .avatar img {
+    width: 100px;
+    min-height: 100px;    
+}
+
 .person .name {
     margin-bottom: .5em;
 }
 
 .person .phone {
 
+}
+
+.person .location {
+    position: absolute;
+    top: -.2em;
+    right: -.2em;
+    line-height: 1.5em;
+    padding: 0 .3em;
+    background: #CCC;
+    color: #000;
+    opacity: .6;
+}
+
+.person .location.sydney {
+    background: #6293E3;
+}
+.person .location.melbourne {
+    background: #84CF80;
+}
+.person .location.brisbane {
+    background: #EDD77E;
+}
+.person .location.perth {
+    background: #EBABD0;
 }

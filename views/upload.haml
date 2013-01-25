@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Upload Address Book
+    %meta{"http-equiv" => "Content-Type", content: "text/html; charset=UTF-8"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=2"}
+    %meta{name: "robots", content: "noindex, nofollow"}    
+    
+    %link{rel: "stylesheet", type: "text/css", href: "http://fonts.googleapis.com/css?family=Roboto+Condensed"}
+    %link{rel: "stylesheet", type: "text/css", href: "1140.css"}
+    %link{rel: "stylesheet", type: "text/css", href: "style.css"}
+        
+  %body
+    .container
+      .row
+        .twelvecol
+          %header
+            %h1 TW Avatars - Upload Address Book CSV
+            
+          %form{action: "/upload", method: "POST", enctype: "multipart/form-data"}
+            %input{type: "file", name: "address_book"}
+            %input{type: "submit"}

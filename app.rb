@@ -1,7 +1,21 @@
 require "sinatra"
 require "haml"
+require "mongoid"
+
+require "./person"
+
+Mongoid.load!("config/mongoid.yml")
+
+get '/upload' do
+  haml :upload
+end
+
+post '/upload' do
+  Person.update_address_book(params[:address_book][:tempfile].read)
+  redirect '/'
+end
 
 get '/' do
-  @people = [{name: "Mr. Ted Long-Name Testersson", phone: "0777 777 777", avatar: "https://graph.facebook.com/rickgrundy/picture?type=large"}] * 10
+  @people = Person.all
   haml :index
 end

@@ -1,0 +1,56 @@
+.row div:last-child {
+    margin-right: 0px;
+}
+
+.row {
+    overflow: visible;
+}
+
+.clearfix {
+    clear: both;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+header h1 {
+    padding: .5em;
+    color: #FFF;
+    background: #333;
+}
+
+.person {
+    padding: 1em 1em 1em 120px;
+    margin: 1em .5em 10px;
+    background: #EEE;
+    position: relative;
+    overflow: visible;
+    min-height: 70px;
+}
+
+.person .avatar {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: .5em;
+    border: 1px solid #efefef;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+	-webkit-transform: rotate(-3deg); 
+    -moz-transform: rotate(-3deg); 
+    -o-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+}
+
+.person .name {
+    margin-bottom: .5em;
+}
+
+.person .phone {
+
+}

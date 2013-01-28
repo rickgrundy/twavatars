@@ -1,10 +1,11 @@
 !!!
 %html
   %head
-    %title TW Avatars
+    %title TW Australia Photo Book
     %meta{"http-equiv" => "Content-Type", content: "text/html; charset=UTF-8"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=2"}
-    %meta{name: "robots", content: "noindex, nofollow"}    
+    %meta{name: "robots", content: "noindex, nofollow"}
+    %link{rel: "icon", type: "image/png", href: "favicon.png"}
     
     %link{rel: "stylesheet", type: "text/css", href: "http://fonts.googleapis.com/css?family=Roboto+Condensed"}
     %link{rel: "stylesheet", type: "text/css", href: "1140.css"}
@@ -12,8 +13,11 @@
         
   %body       
     .alphabet
-      -('A'..'Z').each do |char|
-        %a.letter{href: "##{char}"}=char
+      %table
+        %tr
+          -('A'..'Z').each do |char|
+            %td
+              %a.letter{href: "##{char}"}=char
          
     .container
       -used_letters = []

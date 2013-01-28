@@ -1,20 +1,19 @@
 .row div:last-child {
-    margin-right: 0px;
+  margin-right: 0px;
 }
 
 .row {
-    overflow: visible;
-    position: relative;
-    min-width: 740px;    
+  overflow: visible;
+  min-width: 0;    
 }
 
 .clearfix {
-    clear: both;
+  clear: both;
 }
 
 body {
-    font-family: 'Roboto Condensed', sans-serif;
-    position: relative;
+  font-family: 'Roboto Condensed', sans-serif;
+  position: relative;
 }
 
 header {
@@ -26,17 +25,6 @@ header {
 header h1 {
   padding: .5em;
   margin-bottom: .5em;
-}
-
-.alphabet {
-  display: none;
-}
-
-.alphabet a.letter {
-  float: left;
-  text-align: center;
-  text-decoration: none;
-  color: #FFF;
 }
 
 .person {
@@ -126,15 +114,22 @@ header h1 {
   -webkit-box-shadow: 0 0 10px #000;
 }
 
-.alphabet .letter {
-  float: left;
-  width: 3.846154%;
-  text-align: center;
-  margin-top: 0;
-  position: static;
+.alphabet table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.alphabet .letter.active {
+.alphabet table td {
+    width: 3.846154%;
+    text-align: center;
+}
+
+.alphabet a.letter {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.alphabet a.letter.active {
   color: #FF8;
   text-shadow: 0 0 2em #FFF;
 }
@@ -154,5 +149,14 @@ a.initial {
   }
   a.initial {
     top: -4.5em;
+  }
+}
+
+@media handheld, only screen and (max-width: 767px) {
+  .alphabet {
+    font-size: 1em;
+  }
+  .person {
+    margin-bottom: 1.5em;
   }
 }

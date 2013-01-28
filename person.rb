@@ -19,6 +19,10 @@ class Person
     end
   end
   
+  def initial
+    name[0].upcase
+  end
+  
   def avatar
     "https://graph.facebook.com/#{name.gsub(' ', '').downcase}/picture?type=large"
   end

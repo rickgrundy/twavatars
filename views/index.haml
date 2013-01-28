@@ -16,15 +16,18 @@
         %a.letter{href: "##{char}"}=char
          
     .container
+      -used_letters = []
       -@people.each_slice(3) do |row|
         .row
           -row.each do |person|
             .fourcol
               .person
-                %a.letter{name: person.name[0]}
+                -unless used_letters.include? person.initial
+                  %a.initial{name: person.initial, "data-initial" => person.initial}
+                  -used_letters << person.initial
                 .avatar
                   .frame
-                    %image{src: person.avatar}
+                    / %image{src: person.avatar}
                 .name  
                   %h3=person.name
                 .phone

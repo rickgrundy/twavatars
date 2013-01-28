@@ -134,7 +134,25 @@ header h1 {
   position: static;
 }
 
-a.letter {
+.alphabet .letter.active {
+  color: #FF8;
+  text-shadow: 0 0 2em #FFF;
+}
+
+a.initial {
   position: absolute;
   top: -4em;
+}
+
+
+@media only screen and (max-width: 1023px) {
+  .alphabet {
+    font-size: 1.5em;
+  }
+  .container {
+    margin-top: 4.5em;
+  }
+  a.initial {
+    top: -4.5em;
+  }
 }

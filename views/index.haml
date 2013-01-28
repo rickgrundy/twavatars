@@ -10,18 +10,12 @@
     %link{rel: "stylesheet", type: "text/css", href: "1140.css"}
     %link{rel: "stylesheet", type: "text/css", href: "style.css"}
         
-  %body
+  %body       
     .alphabet
       -('A'..'Z').each do |char|
-        %a.letter{href: "##{char}"}=char  
-        
+        %a.letter{href: "##{char}"}=char
+         
     .container
-      .row
-        .twelvecol
-          %header
-            %h1 Team Hug 2013 Photo Book
-            .clearfix
-        
       -@people.each_slice(3) do |row|
         .row
           -row.each do |person|
@@ -29,7 +23,8 @@
               .person
                 %a.letter{name: person.name[0]}
                 .avatar
-                  %image{src: person.avatar}
+                  .frame
+                    %image{src: person.avatar}
                 .name  
                   %h3=person.name
                 .phone
@@ -38,3 +33,4 @@
                 .clearfix          
         
     %script{type: "text/javascript", src:"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+    %script{type: "text/javascript", src:"app.js"}

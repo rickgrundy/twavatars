@@ -15,8 +15,13 @@
       .row
         .twelvecol
           %header
-            %h1 Team Hug 2013 - Upload Address Book CSV
+            %h1 Team Hug 2013 - Upload Address Book & Photos
             
           %form{action: "/upload", method: "POST", enctype: "multipart/form-data"}
-            %input{type: "file", name: "address_book"}
+            %label{for: "address_book"} Address Book CSV
+            %input{type: "file", name: "address_book", id: "address_book"}
+            %br
+            %label{for: "photo_list"} Photo List Txt
+            %input{type: "file", name: "photo_list", id: "photo_list"}
+            %br
             %input{type: "submit"}

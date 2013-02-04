@@ -1,11 +1,13 @@
 require 'mongoid'
 require 'csv'
+require_relative './photo_name_matcher.rb'
  
 class Person
   include Mongoid::Document
   field :name, type: String
   field :phone, type: String
   field :location, type: String
+  field :photo_filename, type: String
   
   def self.update_address_book(csv)
     self.destroy_all
@@ -16,6 +18,14 @@ class Person
         Person.new(name: row["Name"], phone: row["Mobile"], location: row["Location"]).save
         @used_names << row["Name"].downcase
       end
+    end
+  end
+  
+  def self.update_photos(filenames)
+    filenames.map!(&:strip)
+    Person.all.each do |person| 
+      person.photo_filename = PhotoNameMatcher.find_matching_photo(person, filenames)
+      person.save
     end
   end
   

@@ -31,14 +31,15 @@
                   -used_letters << person.initial
                 .avatar
                   -if photo = person.photo
-                    .frame{style: "background-image: url(#{photo.tile_url}); background-position: -#{photo.tile_offset}px 0;"}
-                      -# %image{src: person.avatar}
+                    .photo{style: "background-image: url(#{Photo::TILE}); background-position: -#{photo.scaled_tile_offset}px 0;", "data-zoom-offset" => "#{photo.zoom_tile_offset}px"}
                 .name  
                   %h3=person.name
                 .phone
                   %a{href: "tel:#{person.phone}"}=person.phone
                 .location{class: person.location.downcase}=person.location
-                .clearfix          
+                .clearfix         
+                
+    .zoom{style: "display: none; width: #{Photo::WIDTH/2}px; height: #{Photo::HEIGHT/2}px; background-image: url(#{Photo::TILE});"}
         
     %script{type: "text/javascript", src:"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
     %script{type: "text/javascript", src:"app.js"}

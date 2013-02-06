@@ -23,10 +23,24 @@ var TWAvatars = {
             $(".alphabet .letter").removeClass("active");
             $(".alphabet .letter:contains(" + char + ")").addClass("active");            
         }
+    },
+    
+    zoomPhoto: function(e) {
+        var offset = $(e.target).data("zoom-offset")
+        $(".zoom:hidden").css({
+            "background-position": "-" + offset + " 0"
+        }).appendTo($(e.target).parent()).fadeIn('fast');
+        return false;
+    },
+    
+    closeZoom: function(e) {
+        $(".zoom:visible").fadeOut('fast');
     }
-}
+ }
 
 $(function() {
     $(document).keypress(TWAvatars.jumpToAlphabet);
     $(document).scroll(TWAvatars.highlightAlphabet);
+    $(document).click(TWAvatars.closeZoom);
+    $(".photo").click(TWAvatars.zoomPhoto);
 });

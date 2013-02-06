@@ -1,16 +1,17 @@
 class Photo
   WIDTH = 456
   HEIGHT = 408
+  TILE = ENV["PHOTO_TILE_URL"]
   
   def initialize(attrs)
     @index = attrs[:index]
   end
   
-  def tile_url
-    ENV["PHOTO_TILE_URL"] || raise("Must specify PHOTO_TILE_URL env var.")
+  def zoom_tile_offset
+    @index * WIDTH / 2
   end
   
-  def tile_offset
-    @index * WIDTH / 4 # Scale down for retina
+  def scaled_tile_offset
+    @index * WIDTH / 4
   end
 end

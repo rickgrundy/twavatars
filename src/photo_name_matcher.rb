@@ -1,10 +1,10 @@
 module PhotoNameMatcher
   def self.find_matching_photo(person, filenames)
     best_match = nil
-    filenames.each do |filename|
+    filenames.each_with_index do |filename, i|
       name = normalise filename.match(/([^\d]+).*\.\w+/).captures.first
-      return filename if exact_match?(name, person)
-      best_match = filename if surname_match?(name, person)
+      return matched(filename, i) if exact_match?(name, person)
+      best_match = matched(filename, i) if surname_match?(name, person)
     end
     return best_match
   end
@@ -22,5 +22,9 @@ module PhotoNameMatcher
     initial = person.initial.downcase
     surname = normalise person.name.split(/\s/).last
     name.match /^#{initial}.*#{surname}$/
+  end
+  
+  def self.matched(filename, index)
+    {filename: filename, index: index}
   end
 end

@@ -30,8 +30,9 @@
                   %a.initial{name: person.initial, "data-initial" => person.initial}
                   -used_letters << person.initial
                 .avatar
-                  .frame
-                    %image{src: person.avatar}
+                  -if photo = person.photo
+                    .frame{style: "background-image: url(#{photo.tile_url}); background-position: -#{photo.tile_offset}px 0;"}
+                      -# %image{src: person.avatar}
                 .name  
                   %h3=person.name
                 .phone

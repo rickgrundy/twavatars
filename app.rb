@@ -17,6 +17,6 @@ post '/upload' do
 end
 
 get '/' do
-  @people = Person.all
+  @people = Person.all.sort(name: 1)
   haml :index
 end

@@ -40,12 +40,12 @@ header h1 {
   position: absolute;
   top: -10px;
   left: -10px;
-  width: 100px;
-  height: 100px;
+  width: 114px;
+  height: 102px;
   float: left;
   margin-right: .5em;
-  padding: 5px;
-  background: #FFF;
+  padding: 4px;
+  background: #FFFFF5;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06);
@@ -53,13 +53,9 @@ header h1 {
 
 .person .avatar .frame {
   overflow: hidden;
-  height: 100px;
-  width: 100px;
-}
-
-.person .avatar img {
-    width: 100px;
-    min-height: 100px;
+  height: 100%;
+  width: 100%;
+  background-size: auto 100%;
 }
 
 .person .name {
@@ -130,7 +126,7 @@ header h1 {
 }
 
 .alphabet a.letter.active {
-  color: #FF8;
+  color: #FF3;
   text-shadow: 0 0 2em #FFF;
 }
 

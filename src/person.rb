@@ -1,5 +1,6 @@
 require 'mongoid'
 require 'csv'
+require_relative './photo.rb'
 require_relative './photo_name_matcher.rb'
  
 class Person
@@ -8,6 +9,7 @@ class Person
   field :phone, type: String
   field :location, type: String
   field :photo_filename, type: String
+  field :photo_index, type: Integer
   
   def self.update_address_book(csv)
     self.destroy_all
@@ -24,8 +26,11 @@ class Person
   def self.update_photos(filenames)
     filenames.map!(&:strip)
     Person.all.each do |person| 
-      person.photo_filename = PhotoNameMatcher.find_matching_photo(person, filenames)
-      person.save
+      if matched = PhotoNameMatcher.find_matching_photo(person, filenames)
+        person.photo_filename = matched[:filename]
+        person.photo_index = matched[:index]
+        person.save
+      end
     end
   end
   
@@ -33,8 +38,8 @@ class Person
     name[0].upcase
   end
   
-  def avatar
-    "https://graph.facebook.com/#{name.gsub(' ', '').downcase}/picture?type=large"
+  def photo
+    Photo.new(index: photo_index) if photo_index
   end
   
   private

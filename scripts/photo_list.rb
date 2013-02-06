@@ -1,10 +1,11 @@
 require 'fileutils'
 require 'RMagick'
+require_relative '../src/photo.rb'
 
 ask = ->(prompt){ puts prompt; gets.strip }
 
-W = 460
-H = 410
+W = Photo::WIDTH
+H = Photo::HEIGHT
 
 output_dir = FileUtils.mkdir_p('tmp').first
 photos_dir = ask['Photos directory:']
@@ -24,6 +25,5 @@ montage = tiles.montage do
   self.tile = Magick::Geometry.new tiles.size, 1
 end
 montage.write "#{output_dir}/avatars.jpg"
-
 
 puts "--> Finished. Upload #{output_dir}/avatars.jpg to the CDN and #{output_dir}/photos.txt to the app."

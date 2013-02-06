@@ -70,7 +70,7 @@ header h1 {
     left: 0;
     overflow: hidden;
     background-size: auto 100%;
-    z-index: 1000;
+    z-index: 1001;
     cursor: -webkit-zoom-out; 
     cursor: -moz-zoom-out;    
 }
@@ -118,7 +118,7 @@ header h1 {
   display: block;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 1002;
   width: 100%;
   padding: .5em 0;
   background: #333;

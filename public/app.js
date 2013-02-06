@@ -27,7 +27,7 @@ var TWAvatars = {
     
     zoomPhoto: function(e) {
         var offset = $(e.target).data("zoom-offset")
-        $(".zoom:hidden").css({
+        $(".zoom").hide().css({
             "background-position": "-" + offset + " 0"
         }).appendTo($(e.target).parent()).fadeIn('fast');
         return false;
@@ -41,6 +41,6 @@ var TWAvatars = {
 $(function() {
     $(document).keypress(TWAvatars.jumpToAlphabet);
     $(document).scroll(TWAvatars.highlightAlphabet);
-    $(document).click(TWAvatars.closeZoom);
+    $(document).click(TWAvatars.closeZoom);    
     $(".photo").click(TWAvatars.zoomPhoto);
 });

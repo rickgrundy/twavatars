@@ -1,5 +1,5 @@
 !!!
-%html
+%html{manifest: "twavatars.appcache"}
   %head
     %title TW Australia Photo Book
     %meta{"http-equiv" => "Content-Type", content: "text/html; charset=UTF-8"}
@@ -7,11 +7,15 @@
     %meta{name: "robots", content: "noindex, nofollow"}
     %link{rel: "icon", type: "image/png", href: "favicon.png"}
     
+    %meta{name: "apple-mobile-web-app-capable", content: "yes"}
+    %meta{name: "apple-mobile-web-app-status-bar-style", content: "black"}
+    %link{rel: "apple-touch-icon-precomposed", type: "image/png", href: "favicon.png"}    
+    
     %link{rel: "stylesheet", type: "text/css", href: "http://fonts.googleapis.com/css?family=Roboto+Condensed"}
     %link{rel: "stylesheet", type: "text/css", href: "1140.css"}
     %link{rel: "stylesheet", type: "text/css", href: "style.css"}
         
-  %body       
+  %body 
     .alphabet
       %table
         %tr
@@ -20,6 +24,16 @@
               %a.letter{href: "##{char}"}=char
          
     .container
+      .row.offline
+        .twelvecol
+          Works offline. Tap 
+          %svg{xmlns: "http://www.w3.org/2000/svg", width: "12px", height: "10px", viewBox: "0 0 12 10", version: "1.1"}
+            %g
+              %path{d: "M12,3.5L8,0v2.25c0,0-5,0.75-5,5C4.5,5,8,4.75,8,4.75V7L12,3.5z"}
+            %g
+              %polygon{points: "10,7 9,8 9,9 1,9 1,3 3.5,3 4.5,2 0,2 0,10 10,10"}
+          and add to home screen.
+          
       -used_letters = []
       -@people.each_slice(3) do |row|
         .row

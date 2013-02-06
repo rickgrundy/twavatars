@@ -20,3 +20,15 @@ get '/' do
   @people = Person.all.asc(:name)
   haml :index
 end
+
+get "/twavatars.appcache" do
+  ["CACHE MANIFEST", "", "CACHE:", "/", "/favicon.png", "/1140.css", "/style.css", "/app.js", Photo::TILE, 
+    "http://themes.googleusercontent.com/static/fonts/robotocondensed/v7/Zd2E9abXLFGSr9G3YK2MsNxB8OB85xaNTJvVSB9YUjQ.woff",
+    "", "NETWORK:", "*", "", "#VERSION #{appcache_version}"].join("\n")
+end
+
+private
+
+def appcache_version
+  Person.desc(:updated_at).first.updated_at.to_s + Photo::TILE
+end

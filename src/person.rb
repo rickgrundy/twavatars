@@ -5,6 +5,8 @@ require_relative './photo_name_matcher.rb'
  
 class Person
   include Mongoid::Document
+  include Mongoid::Timestamps::Updated
+  
   field :name, type: String
   field :phone, type: String
   field :location, type: String

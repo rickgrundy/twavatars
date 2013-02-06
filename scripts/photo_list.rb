@@ -24,6 +24,6 @@ montage = tiles.montage do
   self.geometry = Magick::Geometry.new W, H, 0, 0
   self.tile = Magick::Geometry.new tiles.size, 1
 end
-montage.write "#{output_dir}/avatars.jpg"
+montage.write("#{output_dir}/avatars.jpg") { self.quality = 35 }
 
 puts "--> Finished. Upload #{output_dir}/avatars.jpg to the CDN and #{output_dir}/photos.txt to the app."

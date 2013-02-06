@@ -29,7 +29,7 @@ var TWAvatars = {
         var offset = $(e.target).data("zoom-offset")
         $(".zoom").hide().css({
             "background-position": "-" + offset + " 0"
-        }).appendTo($(e.target).parent()).fadeIn('fast');
+        }).appendTo($(e.target).parent()).fadeIn('fas');
         return false;
     },
     
@@ -41,6 +41,6 @@ var TWAvatars = {
 $(function() {
     $(document).keypress(TWAvatars.jumpToAlphabet);
     $(document).scroll(TWAvatars.highlightAlphabet);
-    $(document).click(TWAvatars.closeZoom);    
+    $("body, .container").click(TWAvatars.closeZoom);    
     $(".photo").click(TWAvatars.zoomPhoto);
 });

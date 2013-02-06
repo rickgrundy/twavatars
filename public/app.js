@@ -29,7 +29,7 @@ var TWAvatars = {
         var offset = $(e.target).data("zoom-offset")
         $(".zoom").hide().css({
             "background-position": "-" + offset + " 0"
-        }).appendTo($(e.target).parent()).show();
+        }).appendTo($(e.target).parent()).fadeIn('fast');
         return false;
     },
     

@@ -1,7 +1,10 @@
 require "sinatra"
 require "haml"
 require "mongoid"
-
+configure :production do
+  require 'newrelic_rpm'
+end
+  
 require "./src/person"
 
 Mongoid.load!("config/mongoid.yml")

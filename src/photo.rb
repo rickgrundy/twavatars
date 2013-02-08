@@ -1,7 +1,7 @@
 class Photo
   WIDTH = 456
   HEIGHT = 408
-  TILE = ENV["PHOTO_TILE_URL"]
+  TILE = ENV["PHOTO_TILE_URL"] || raise("Must set PHOTO_TILE_URL env var.")
   
   def initialize(attrs)
     @index = attrs[:index]

@@ -25,10 +25,11 @@ get '/' do
 end
 
 get "/twavatars.appcache" do
-  ["CACHE MANIFEST", "", "CACHE:", "/", "/favicon.png", "/1140.css", "/style.css", "/app.js", Photo::TILE, 
-    "http://themes.googleusercontent.com/static/fonts/robotocondensed/v7/Zd2E9abXLFGSr9G3YK2MsNxB8OB85xaNTJvVSB9YUjQ.woff",
-    "", "NETWORK:", "*", "", "#VERSION #{appcache_version}"].join("\n")
+  return 404 if settings.environment == :development
+  @version = appcache_version
+  erb :appcache
 end
+
 
 private
 

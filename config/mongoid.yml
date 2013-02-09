@@ -3,6 +3,14 @@ development:
     default:
       database: twavatars
       hosts:
-        - localhost:27017      
+        - localhost:27017    
+        
+test:
+  sessions:
+    default:
+      database: twavatars_test
+      hosts:
+        - localhost:27017
+        
 production:
   uri: <%= ENV['MONGOLAB_URI'] %>

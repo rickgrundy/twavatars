@@ -3,8 +3,11 @@ class Photo
   HEIGHT = 408
   TILE = ENV["PHOTO_TILE_URL"] || raise("Must set PHOTO_TILE_URL env var.")
   
+  attr_reader :index, :filename
+  
   def initialize(attrs)
     @index = attrs[:index]
+    @filename = attrs[:filename]
   end
   
   def zoom_tile_offset

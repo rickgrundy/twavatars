@@ -15,13 +15,11 @@
       .row
         .twelvecol
           %header
-            %h1 Upload Address Book & Photos
-            
-          %form{action: "/upload", method: "POST", enctype: "multipart/form-data"}
-            %label{for: "address_book"} Address Book CSV
-            %input{type: "file", name: "address_book", id: "address_book"}
-            %br
-            %label{for: "photo_list"} Photo List Txt
-            %input{type: "file", name: "photo_list", id: "photo_list"}
-            %br
-            %input{type: "submit"}
+            %h1 Upload Finished
+          
+          -if @unmatched_photos
+            %h2="Unmatched Photos (#{@unmatched_photos.size})"
+            %pre=@unmatched_photos.join "\n"
+          
+          %h2="Missing Photos (#{@missing_photos.size})"
+          %pre=@missing_photos.join "\n"

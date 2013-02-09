@@ -18,22 +18,22 @@ class Person
     @used_names = []
     CSV.parse(csv, headers: true) do |row|
       if valid? row
-        row["Location"] ||= "Visitor"
-        Person.new(name: row["Name"], phone: row["Mobile"], location: row["Location"]).save
+        Person.new(name: row["Name"], phone: row["Mobile"], location: row["Location"] || "Visitor").save
         @used_names << row["Name"].downcase
       end
     end
   end
   
   def self.update_photos(filenames)
-    filenames.map!(&:strip)
+    photo_name_matcher = PhotoNameMatcher.new(filenames)
     Person.all.each do |person| 
-      if matched = PhotoNameMatcher.find_matching_photo(person, filenames)
-        person.photo_filename = matched[:filename]
-        person.photo_index = matched[:index]
-        person.save
-      end
+      update_photo person, photo_name_matcher.find_matching_photo(person)
     end
+    photo_name_matcher.unused_filenames
+  end
+  
+  def self.missing_photos
+    where(photo_index: nil).asc(:name)
   end
   
   def initial
@@ -41,12 +41,20 @@ class Person
   end
   
   def photo
-    Photo.new(index: photo_index) if photo_index
+    Photo.new(index: photo_index, filename: photo_filename) if photo_index
   end
   
   private
   
   def self.valid?(row)
     row["Name"] && !(row["Name"] =~ /Access Card/) && !@used_names.include?(row["Name"].downcase)
+  end
+  
+  def self.update_photo(person, photo)
+    if photo
+      person.photo_filename = photo.filename
+      person.photo_index = photo.index
+      person.save
+    end
   end
 end

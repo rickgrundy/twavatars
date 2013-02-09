@@ -14,13 +14,18 @@ get '/upload' do
 end
 
 post '/upload' do
-  Person.update_address_book(params[:address_book][:tempfile].read) if params[:address_book]
-  Person.update_photos(params[:photo_list][:tempfile].readlines) if params[:photo_list]
-  redirect '/'
+  if params[:address_book]
+    Person.update_address_book(params[:address_book][:tempfile].read)
+  end
+  if params[:photo_list]
+    @unmatched_photos = Person.update_photos(params[:photo_list][:tempfile].readlines)
+  end
+  @missing_photos = Person.missing_photos.map(&:name)
+  haml :upload_finished
 end
 
 get '/' do
-  @people = Person.all.asc(:name)
+  @people = Person.asc(:name)
   haml :index
 end
 

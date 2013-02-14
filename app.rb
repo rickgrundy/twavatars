@@ -37,7 +37,7 @@ end
 private
 
 def appcache_version
-  Person.desc(:updated_at).first.updated_at.to_s + Photo::TILE
+  Person.where(:updated_at.exists => true).desc(:updated_at).first.updated_at.to_s + " " + Photo::TILE
 end
 
 def update_address_book

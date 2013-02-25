@@ -18,12 +18,13 @@ end
 post '/upload' do
   update_address_book if params[:address_book]
   update_photos if params[:photo_list]
-  @missing_photos = Person.missing_photos.map(&:name)
+  @with_photos = Person.with_photos
+  @missing_photos = Person.missing_photos
   haml :upload_finished
 end
 
 get '/' do
-  @people = Person.all
+  @people = Person.with_photos
   haml :index
 end
 
@@ -52,5 +53,6 @@ def update_photos
     person.photo = matcher.photo_for person
     person.save
   end
-  @unmatched_photos = matcher.unused_filenames
+  @unused_photos = matcher.unused_photos
+  @duplicate_photos = matcher.duplicate_photos
 end

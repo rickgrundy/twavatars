@@ -46,6 +46,12 @@ describe PhotoMatcher do
     verify_nil "Baz"
   end
   
+  it "tolerates strange seperators" do
+    @matcher = PhotoMatcher.new ["Foo.Bar.jpg", "Hyphe-Nated.png"]
+    verify "Foo Bar", 0, "Foo.Bar.jpg"
+    verify "H Nated", 1, "Hyphe-Nated.png"
+  end
+  
   it "ignores wildly unconventional formats" do
     @matcher = PhotoMatcher.new ["Foo 1234 Bar.jpg", "1234.png", "Foo Bar"]
     verify_nil "Foo Bar"
@@ -54,7 +60,14 @@ describe PhotoMatcher do
   it "keeps track of unused filenames" do
     @matcher = PhotoMatcher.new ["notused.jpg", "foo.jpg", "alsonotused.jpg"]
     verify "Foo", 1, "foo.jpg"
-    @matcher.unused_filenames.should == ["notused.jpg", "alsonotused.jpg"]
+    @matcher.unused_photos.map(&:filename).should == ["notused.jpg", "alsonotused.jpg"]
+  end
+  
+  it "keeps track of duplicate images" do
+    @matcher = PhotoMatcher.new ["Person Foo.jpg", "notused.jpg", "Penguin Foo.jpg", "Parson Foo.jpg"]
+    verify "Person Foo", 0, "Person Foo.jpg"
+    verify "Parson Foo", 3, "Parson Foo.jpg"
+    @matcher.duplicate_photos.map(&:filename).should == ["Penguin Foo.jpg"]
   end
 end
 

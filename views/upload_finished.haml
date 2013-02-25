@@ -16,10 +16,16 @@
         .twelvecol
           %header
             %h1 Upload Finished
-          
-          -if @unmatched_photos
-            %h2="Unmatched Photos (#{@unmatched_photos.size})"
-            %pre=@unmatched_photos.join "\n"
+      
+          %h2="Matched Photos (#{@with_photos.size})"
+          %pre=@with_photos.map { |p| p "#{p.name} (#{p.photo.filename})" }.join "\n"
+        
+          %h2="Unused Photos (#{@unused_photos.size})"
+          %pre=@unused_photos.map(&:filename).join "\n"
+        
+          -if @duplicate_photos
+            %h2="Duplicate Photos (#{@duplicate_photos.size})"
+            %pre=@duplicate_photos.map(&:filename).join "\n"
           
           %h2="Missing Photos (#{@missing_photos.size})"
-          %pre=@missing_photos.join "\n"
+          %pre=@missing_photos.map(&:name).join "\n"

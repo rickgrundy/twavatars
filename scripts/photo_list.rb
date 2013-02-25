@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'RMagick'
+ENV["PHOTO_TILE_URL"] ||= "ignore-me"
 require_relative '../src/photo.rb'
 
 ask = ->(prompt){ puts prompt; gets.strip }

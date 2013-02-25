@@ -18,6 +18,10 @@ class Person
     where(photo_index: nil)
   end
   
+  def self.with_photos
+    where(:photo_index.ne => nil)
+  end
+  
   def initial
     name[0].upcase
   end

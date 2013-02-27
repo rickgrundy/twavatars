@@ -11,7 +11,7 @@
     %meta{name: "apple-mobile-web-app-status-bar-style", content: "black"}
     %link{rel: "apple-touch-icon-precomposed", type: "image/png", href: "favicon.png"}    
     
-    %link{rel: "stylesheet", type: "text/css", href: "http://fonts.googleapis.com/css?family=Roboto+Condensed"}
+    %link{rel: "stylesheet", type: "text/css", href: "http://fonts.googleapis.com/css?family=Open+Sans"}
     %link{rel: "stylesheet", type: "text/css", href: "1140.css"}
     %link{rel: "stylesheet", type: "text/css", href: "style.css"}
         
@@ -51,7 +51,6 @@
                 .phone
                   %a{href: "tel:#{person.phone}"}=person.phone
                 .location{class: person.location.downcase}=person.location
-                .clearfix         
                 
     .zoom{style: "display: none; width: #{Photo::WIDTH/2}px; height: #{Photo::HEIGHT/2}px; background-image: url(#{Photo::TILE});"}
         

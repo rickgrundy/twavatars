@@ -9,7 +9,7 @@ class PhotoMatcher
   
   def photo_for(person)
     all_matches = all_matches_for(person)
-    best_match = all_matches.find { |photo| exact_match? name_from(photo), person } || all_matches.first
+    best_match = all_matches.find { |photo| exact_match? photo, person } || all_matches.first
     track_usage(all_matches, best_match)
     best_match
   end
@@ -18,7 +18,7 @@ class PhotoMatcher
   private
   
   def all_matches_for(person)
-    @all_photos.select { |photo| any_match? name_from(photo), person }
+    @all_photos.select { |photo| any_match? photo, person }
   end
   
   def normalise(name)
@@ -30,23 +30,22 @@ class PhotoMatcher
     name_match ? normalise(name_match.captures.first) : ''
   end
   
-  def exact_match?(name, person)
-    name.match /#{normalise person.name}/i
+  def exact_match?(photo, person)
+    name_from(photo).match /#{normalise person.name}/i
   end
   
-  def surname_match?(name, person)
+  def surname_match?(photo, person)
     surname = normalise person.name.split(/\s/).last
-    name.match /^#{person.initial}.*#{surname}$/i
+    name_from(photo).match /^#{person.initial}.*#{surname}$/i
   end
   
-  def any_match?(name, person)
-    exact_match?(name, person) || surname_match?(name, person)
+  def any_match?(photo, person)
+    exact_match?(photo, person) || surname_match?(photo, person)
   end
   
   def track_usage(all_matches, best_match)
     @duplicate_photos += @unused_photos & all_matches
     @duplicate_photos.delete(best_match)
-    @duplicate_photos.uniq!
     @unused_photos -= all_matches
   end
 end

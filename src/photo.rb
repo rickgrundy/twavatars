@@ -1,7 +1,7 @@
 class Photo
   WIDTH = 456
   HEIGHT = 408
-  TILE = ENV["PHOTO_TILE_URL"] || raise("Must set PHOTO_TILE_URL env var.")
+  TILE = ENV["PHOTO_TILE_URL"]
   
   attr_reader :index, :filename
   

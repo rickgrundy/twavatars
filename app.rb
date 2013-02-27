@@ -6,10 +6,13 @@ configure :production do
 end
   
 require "./src/person"
+require "./src/photo"
 require "./src/address_book"
 require "./src/photo_matcher"
 
 Mongoid.load!("config/mongoid.yml")
+
+raise("Must set PHOTO_TILE_URL env var.") unless Photo::TILE
 
 get '/upload' do
   haml :upload

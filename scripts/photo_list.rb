@@ -18,7 +18,10 @@ File.open("#{output_dir}/photos.txt", 'w') do |txt|
 end
 
 tiles = Magick::ImageList.new *files
-tiles.each { |i| i.resize! W, H }
+tiles.each do |i| 
+  i.resize! W, H 
+  i.auto_orient!
+end
 montage = tiles.montage do
   self.border_width = 0
   self.geometry = Magick::Geometry.new W, H, 0, 0

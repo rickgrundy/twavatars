@@ -10,16 +10,17 @@ class Person
   field :phone, type: String
   field :location, type: String
   field :photo_filename, type: String
-  field :photo_index, type: Integer
+  field :photo_row, type: Integer
+  field :photo_col, type: Integer
   
   default_scope asc(:name)
   
   def self.missing_photos
-    where(photo_index: nil)
+    where(photo_filename: nil)
   end
   
   def self.with_photos
-    where(:photo_index.ne => nil)
+    where(:photo_filename.ne => nil)
   end
   
   def initial
@@ -27,10 +28,10 @@ class Person
   end
   
   def photo
-    Photo.new(index: photo_index, filename: photo_filename) if photo_index
+    Photo.new(filename: photo_filename, row: photo_row, col: photo_col) if photo_filename
   end
   
   def photo=(photo)
-    self.photo_filename, self.photo_index = photo ? [photo.filename, photo.index] : [nil, nil]
+    self.photo_filename, self.photo_row, self.photo_col = photo ? [photo.filename, photo.row, photo.col] : nil
   end
 end

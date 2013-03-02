@@ -26,9 +26,9 @@ var TWAvatars = {
     },
     
     zoomPhoto: function(e) {
-        var offset = $(e.target).data("zoom-offset")
         $(".zoom").hide().css({
-            "background-position": "-" + offset + " 0"
+            "background-position": $(e.target).data("zoom-background-position"),
+            "background-size": $(e.target).css("background-size")
         }).appendTo($(e.target).parent()).fadeIn('fas');
         return false;
     },

@@ -1,8 +1,12 @@
 class PhotoMatcher
   attr_reader :unused_photos, :duplicate_photos
   
-  def initialize(filenames)
-    @all_photos = filenames.map.with_index { |filename, i| Photo.new(filename: filename.strip, index: i) }
+  def initialize(photo_txt_lines)
+    @all_photos = photo_txt_lines.map.with_index do |line, i|
+      coord, filename = line.split("\s", 2)
+      row, col = coord.split(",").map(&:to_i)
+      Photo.new(filename: filename.strip, row: row, col: col)
+    end
     @unused_photos = @all_photos.clone
     @duplicate_photos = []
   end

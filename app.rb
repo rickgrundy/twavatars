@@ -12,7 +12,7 @@ require "./src/photo_matcher"
 
 Mongoid.load!("config/mongoid.yml")
 
-raise("Must set PHOTO_TILE_URL env var.") unless Photo::TILE
+raise("Must set PHOTO_TILE_URL and PHOTO_TILE_COLS env vars.") unless Photo::TILE and Photo::COLS
 
 get '/upload' do
   haml :upload

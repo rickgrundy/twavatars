@@ -1,3 +1,5 @@
+require "mongoid"
+
 class Photo
   include Mongoid::Document
   

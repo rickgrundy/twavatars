@@ -43,7 +43,7 @@
                 -unless used_letters.include? person.initial
                   %a.initial{name: person.initial, "data-initial" => person.initial}
                   -used_letters << person.initial
-                .avatar
+                .avatar{style: "width: #{Photo::WIDTH/2}px; height: #{Photo::HEIGHT/2}px;"}
                   -if photo = person.photo
                     .photo{style: "background-image: url(#{Photo::TILE}); background-position: -#{photo.scaled_tile_offset[:x]}px -#{photo.scaled_tile_offset[:y]}px; background-size: #{Photo::COLS * 100}%; -moz-background-size: #{Photo::COLS * 100}%;", "data-zoom-background-position" => "-#{photo.zoom_tile_offset[:x]}px -#{photo.zoom_tile_offset[:y]}px"}
                 .name  
@@ -52,7 +52,7 @@
                   %a{href: "tel:#{person.phone}"}=person.phone
                 .location{class: person.location.downcase}=person.location
                 
-    .zoom{style: "display: none; width: #{Photo::WIDTH/2}px; height: #{Photo::HEIGHT/2}px; background-image: url(#{Photo::TILE});"}
+    .zoom{style: "display: none; width: #{Photo::WIDTH}px; height: #{Photo::HEIGHT}px; background-image: url(#{Photo::TILE});"}
         
     %script{type: "text/javascript", src:"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
     %script{type: "text/javascript", src:"app.js"}

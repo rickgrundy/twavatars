@@ -3,8 +3,8 @@ require "mongoid"
 class Photo
   include Mongoid::Document
   
-  WIDTH = 456
-  HEIGHT = 408
+  WIDTH = 228
+  HEIGHT = 204
   TILE = ENV["PHOTO_TILE_URL"]
   COLS = ENV["PHOTO_TILE_COLS"].to_i
   
@@ -14,10 +14,10 @@ class Photo
   field :col, type: Integer
   
   def zoom_tile_offset
-    {x: col * WIDTH/2, y: row * HEIGHT/2}
+    {x: col * WIDTH, y: row * HEIGHT}
   end
   
   def scaled_tile_offset
-    {x: col * WIDTH/4, y: row * HEIGHT/4}
+    {x: col * WIDTH/2, y: row * HEIGHT/2}
   end
 end

@@ -32,6 +32,7 @@ montage = tiles.montage do
   self.geometry = Magick::Geometry.new W, H, 0, 0
   self.tile = Magick::Geometry.new cols.size, rows.size
 end
-montage.write("#{output_dir}/avatars.jpg") { self.quality = 35 }
+montage.write("#{output_dir}/avatars.jpg") { self.quality = 50 }
 
 puts "--> Finished. Upload #{output_dir}/avatars.jpg to the CDN and #{output_dir}/photos.txt to the app."
+puts "--> You will also need to run this command: heroku config:set PHOTO_TILE_COLS=#{cols.size}"

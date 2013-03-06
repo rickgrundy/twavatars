@@ -45,7 +45,7 @@
                   -used_letters << person.initial
                 .avatar
                   -if photo = person.photo
-                    .photo{style: "background-image: url(#{Photo::TILE}); background-position: -#{photo.scaled_tile_offset[:x]}px -#{photo.scaled_tile_offset[:y]}px; background-size: #{Photo::COLS * 100}%", "data-zoom-background-position" => "-#{photo.zoom_tile_offset[:x]}px -#{photo.zoom_tile_offset[:y]}px"}
+                    .photo{style: "background-image: url(#{Photo::TILE}); background-position: -#{photo.scaled_tile_offset[:x]}px -#{photo.scaled_tile_offset[:y]}px; background-size: #{Photo::COLS * 100}%; -moz-background-size: #{Photo::COLS * 100}%;", "data-zoom-background-position" => "-#{photo.zoom_tile_offset[:x]}px -#{photo.zoom_tile_offset[:y]}px"}
                 .name  
                   %h3=person.name
                 .phone

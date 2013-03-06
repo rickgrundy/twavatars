@@ -28,7 +28,8 @@ var TWAvatars = {
     zoomPhoto: function(e) {
         $(".zoom").hide().css({
             "background-position": $(e.target).data("zoom-background-position"),
-            "background-size": $(e.target).css("background-size")
+            "background-size": $(e.target).css("background-size"),
+            "-moz-background-size": $(e.target).css("-moz-background-size")
         }).appendTo($(e.target).parent()).fadeIn('fas');
         return false;
     },

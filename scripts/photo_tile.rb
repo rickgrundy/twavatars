@@ -15,7 +15,7 @@ files = Dir["#{photos_dir}/*.{jpg,jpeg,png,JPG,JPEG,PNG}"]
 cols = *(0...Math.sqrt(files.size).ceil)
 rows = *(0...Math.sqrt(files.size).round)
 
-File.open("#{output_dir}/photos.txt", 'w') do |txt|
+File.open("#{output_dir}/photos.txt", "w:UTF-8") do |txt|
   coords = rows.product(cols)
   files.each do |f|
     txt.puts "#{coords.shift.join(",")} #{File.basename(f)}"
@@ -32,7 +32,7 @@ montage = tiles.montage do
   self.geometry = Magick::Geometry.new W, H, 0, 0
   self.tile = Magick::Geometry.new cols.size, rows.size
 end
-montage.write("#{output_dir}/avatars.jpg") { self.quality = 50 }
+montage.write("#{output_dir}/avatars.jpg") { self.quality = 65 }
 
 puts "--> Finished. Upload #{output_dir}/avatars.jpg to the CDN and #{output_dir}/photos.txt to the app."
 puts "--> You will also need to run this command: heroku config:set PHOTO_TILE_COLS=#{cols.size}"

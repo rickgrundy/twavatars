@@ -46,12 +46,12 @@ end
 
 def update_address_book
   Person.destroy_all
-  book = AddressBook.new params[:address_book][:tempfile].read
+  book = AddressBook.new params[:address_book][:tempfile].read.force_encoding('UTF-8')
   book.people.each &:save
 end
 
 def update_photos
-  matcher = PhotoMatcher.new params[:photo_list][:tempfile].readlines
+  matcher = PhotoMatcher.new params[:photo_list][:tempfile].readlines.map { |l| l.force_encoding('UTF-8') }
   Person.each do |person|
     person.photo = matcher.photo_for person
     person.save

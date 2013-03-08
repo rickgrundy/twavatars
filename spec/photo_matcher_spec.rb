@@ -44,7 +44,7 @@ describe PhotoMatcher do
     verify "Føø", "Føø.jpg", 0, 0
     verify_nil "Bår"
     verify_nil "Baz"
-  end
+  end  
   
   it "tolerates strange seperators" do
     create_matcher("Foo.Bar.jpg", "Hyphe-Nated.png")

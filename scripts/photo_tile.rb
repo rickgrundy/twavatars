@@ -15,7 +15,7 @@ files = Dir["#{photos_dir}/*.{jpg,jpeg,png,JPG,JPEG,PNG}"]
 cols = *(0...Math.sqrt(files.size).ceil)
 rows = *(0...Math.sqrt(files.size).round)
 
-File.open("#{output_dir}/photos.txt", "w:UTF-8") do |txt|
+File.open("#{output_dir}/photos.txt", "w:utf-8") do |txt|
   coords = rows.product(cols)
   files.each do |f|
     txt.puts "#{coords.shift.join(",")} #{File.basename(f)}"

@@ -46,16 +46,20 @@ end
 
 def update_address_book
   Person.destroy_all
-  book = AddressBook.new params[:address_book][:tempfile].read.force_encoding('UTF-8')
+  book = AddressBook.new as_utf8(params[:address_book][:tempfile].read)
   book.people.each &:save
 end
 
 def update_photos
-  matcher = PhotoMatcher.new params[:photo_list][:tempfile].readlines.map { |l| l.force_encoding('UTF-8') }
+  matcher = PhotoMatcher.new params[:photo_list][:tempfile].readlines.map { |l| as_utf8(l) }
   Person.each do |person|
     person.photo = matcher.photo_for person
     person.save
   end
   @unused_photos = matcher.unused_photos
   @duplicate_photos = matcher.duplicate_photos
+end
+
+def as_utf8(str)
+  str.encode 'UTF-8', {:invalid => :replace, :undef => :replace, :replace => ''}
 end

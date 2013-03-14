@@ -18,7 +18,7 @@
             %h1 Upload Finished
       
           %h2="Matched Photos (#{@with_photos.size})"
-          %pre=@with_photos.map { |p| p "#{p.name} (#{p.photo.filename})" }.join "\n"
+          %pre=@with_photos.map { |p| "#{p.name} (#{p.photo.filename})" }.join "\n"
         
           %h2="Unused Photos (#{@unused_photos.size})"
           %pre=@unused_photos.map(&:filename).join "\n"

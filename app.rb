@@ -27,7 +27,7 @@ post '/upload' do
 end
 
 get '/' do
-  @people = Person.all
+  @people = Person.with_photos
   haml :index
 end
 
